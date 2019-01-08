@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "mono:pixelsize=32:antialias=true:autohint=true";
+static char *font = "Ubuntu Mono:pixelsize=38:antialias=true:autohint=false";
 static int borderpx = 2;
 
 /*
@@ -130,8 +130,8 @@ static unsigned int cursorshape = 2;
  * Default columns and rows numbers
  */
 
-static unsigned int cols = 80;
-static unsigned int rows = 24;
+static unsigned int cols = 100;
+static unsigned int rows = 35;
 
 /*
  * Default colour and shape of the mouse cursor
@@ -206,7 +206,7 @@ MouseKey mkeys[] = {
 };
 
 static char *openurlcmd[] = { "/bin/sh", "-c",
-    "xurls | dmenu -l 10 | xargs -r xdg-open",
+    "xurls | uniq | dmenu -l 10 | xargs -r xdg-open",
     "externalpipe", NULL };
 
 static Shortcut shortcuts[] = {
@@ -240,7 +240,8 @@ static Shortcut shortcuts[] = {
 	{ MODKEY|ShiftMask,     XK_J,           zoom,           {.f = -1} },
 	{ MODKEY|ShiftMask,     XK_U,           zoom,           {.f = +2} },
 	{ MODKEY|ShiftMask,     XK_D,           zoom,           {.f = -2} },
-    	{ MODKEY,		XK_l,		externalpipe,	{ .v = openurlcmd } },
+	{ MODKEY,		XK_l,		externalpipe, 	{.v = openurlcmd} },
+    	{ MODKEY,		XK_comma,	copyurl,	{.i =  0} },
 };
 
 /*
